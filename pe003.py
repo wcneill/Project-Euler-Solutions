@@ -36,15 +36,15 @@ def prime_factors(num):
         facts_list.append(2)
         num /= 2
 
-    for i in range(3, int(math.sqrt(num)), 2):
+    for i in range(3, int(math.sqrt(num)) + 1 , 2):
         while num % i == 0:
             facts_list.append(i)
-            num /= i
+            num = num / i
 
     if num > 2:
         facts_list.append(num)
 
-    return facts_list
+    return sorted(facts_list)
 
 
 def isprime(intgr):
@@ -66,5 +66,7 @@ def isprime(intgr):
 
 if __name__ == '__main__':
 
-    num = 600851475143
-    print(prime_factors(num))
+    # num = 600851475143
+    # print(prime_factors(num))
+
+    print("Prime factor 9:", prime_factors(9))
