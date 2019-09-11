@@ -8,7 +8,7 @@ def factors(intgr):
     :param intgr: Integer you'd like to find all factors of
     :return:
     """
-    return [i for i in range(2, intgr) if intgr % i == 0]
+    return [i for i in range(1, intgr) if intgr % i == 0]
 
 def prime_factors(num):
     """
@@ -67,5 +67,6 @@ def isprime(intgr):
 
 if __name__ == '__main__':
 
-    num = 600851475143
+    num = 997799
     print(prime_factors(num))
+    print(factors(num))
