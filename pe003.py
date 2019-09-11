@@ -35,7 +35,6 @@ def prime_factors(num):
     while num % 2 == 0:
         facts_list.append(2)
         num /= 2
-        print(num)
 
     for i in range(3, int(math.sqrt(num)), 2):
         while num % i == 0:
