@@ -66,13 +66,13 @@ def isprime(intgr):
 
 if __name__ == '__main__':
 
-<<<<<<< HEAD
+
     num = 997799
     print(prime_factors(num))
     print(factors(num))
-=======
+
     # num = 600851475143
     # print(prime_factors(num))
 
     print("Prime factor 9:", prime_factors(9))
->>>>>>> develop
+
