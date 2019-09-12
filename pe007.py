@@ -5,6 +5,7 @@ def is_prime(num):
     Every composite number N has a factor less than or equal to
     sqrt(N). See proof outlined in comments of Exercise 3 - pe003.py
     If no factor is found by sqrt(N), then the number must be prime.
+
     :param num: The number to determine primality of
     :return: Boolean (is prime?)
     """
