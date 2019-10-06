@@ -15,7 +15,7 @@ def lcm(iterable):
     In simple terms, if one wants to know the least common multiple
     of a set of numbers lcm(k_1, k_2, ... , k_n), one need only find
     the prime factorization of each k_i, and count the highest power of
-    each recorded primes. Once the highest power of each prime is found,
+    each recorded prime factor. Once the highest power of each prime is found,
     We multiply each prime to its highest found power to get our answer
 
     EXAMPLE: We want to know lcm(2,4,5,6,8)

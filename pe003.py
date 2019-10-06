@@ -6,7 +6,7 @@ def factors(intgr):
     for large numbers.
 
     :param intgr: Integer you'd like to find all factors of
-    :return:
+    :return: a list of all factors
     """
     return [i for i in range(1, intgr) if intgr % i == 0]
 
