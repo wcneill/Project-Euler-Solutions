@@ -1,4 +1,7 @@
-import divisors as dvd
+"""
+Creates a Fibonacci sequence of all terms less than 4,000,000,
+then sums all the even terms.
+"""
 
 fib = [1, 2]
 
