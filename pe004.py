@@ -15,6 +15,10 @@ def is_palindrome(num):
 
 
 if __name__ == '__main__':
+    """
+    Checks finds the largest product of numbers between 100 and 1000 that is 
+    also a palindrome. 
+    """
 
     brk = False
     pals = []

@@ -20,7 +20,7 @@ def is_prime(num):
 
 def prime_counter(n):
     """
-    Determines the nth prime number
+    Gets a list of the first n prime numbers.
     :param n: the prime number you are looking for
     :return: a list of prime numbers up to the nth prime number
     """
