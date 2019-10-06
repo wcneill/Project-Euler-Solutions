@@ -7,6 +7,8 @@
 # triplets. Luckily, the triple that sums to 1000 happened to be
 # primitive.
 
+# test 123
+
 n = 1
 j = 0
 sum = 0
