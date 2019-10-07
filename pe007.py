@@ -9,6 +9,12 @@ def is_prime(num):
     :param num: The number to determine primality of
     :return: Boolean (is prime?)
     """
+    if num != 2 and num % 2 == 0:
+        return False
+
+    if num != 3 and num % 3 == 0:
+        return False
+
     facts = [i for i in range(2, int(math.sqrt(num)) + 1) if num % i == 0]
 
     if len(facts) == 0:
