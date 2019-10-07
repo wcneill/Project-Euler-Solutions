@@ -6,23 +6,44 @@ def is_prime(num):
     sqrt(N). See proof outlined in comments of Exercise 3 - pe003.py
     If no factor is found by sqrt(N), then the number must be prime.
 
+    Additionally, this algorithm makes use of the fact that any
+    numbers "n" greater than 3 can be represented as:
+
+    n = 6k +/- 1
+
     :param num: The number to determine primality of
     :return: Boolean (is prime?)
     """
-    if num != 2 and num % 2 == 0:
+
+    if num == 1:
         return False
-
-    if num != 3 and num % 3 == 0:
-        return False
-
-    facts = [i for i in range(2, int(math.sqrt(num)) + 1) if num % i == 0]
-
-    if len(facts) == 0:
+    if num == 2:
         return True
-    else:
+    if num == 3:
+        return True
+    if num % 2 == 0:
+        return False
+    if num % 3 == 0:
         return False
 
+    stop = math.floor(math.sqrt(num))
+    i = 5
 
+    while i <= stop:
+
+        # For any num = 5 + 6k, there is an integer n
+        # such that 5 + 6k = 6n - 1
+        if num % i == 0:
+            return False
+
+        # Because, for any integer k:
+        # 5 + 6k + 2 = 6n - 1 + 2 = 6n + 1
+        if num % (i + 2) == 0:
+            return False
+
+        i += 6
+
+    return True
 
 def prime_counter(n):
     """

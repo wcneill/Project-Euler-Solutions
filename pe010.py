@@ -22,19 +22,16 @@ def sumprime(stop):
     """
 
     stop = int(stop)
-    sum = 5
-    i = 5
+    sum = 0
+    i = 1
 
     while i < stop:
-        if i % 2 == 0 or i % 3 == 0:
-            i += 2
-            continue
 
-        elif p7.is_prime(i):
+        if p7.is_prime(i):
             sum = sum + i
-            i += 2
-
-        i += 2
+            i += 1
+        else:
+            i += 1
 
     print(sum)
     return sum
