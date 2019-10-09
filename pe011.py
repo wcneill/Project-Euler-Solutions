@@ -26,7 +26,7 @@ def block_product(grid, sublength):
 
             # product of this cell and the three to the right
             if i + sublength <= cols:
-                product = grid[i, j:(j + sublength)].prod()
+                product = grid[i, j:j + sublength].prod()
 
                 if product > max_product:
                     max_product = product
