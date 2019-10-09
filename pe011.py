@@ -1,5 +1,5 @@
 import numpy as np
-
+import pe010 as p10
 
 def block_product(grid, sublength):
     """
@@ -80,7 +80,8 @@ if __name__ == '__main__':
     01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"""
 
     rowsize = nums.count('\n') + 1
-
     npgrid = np.fromstring(nums, dtype=int, sep=' ').reshape(rowsize, -1)
 
     print(block_product(npgrid, 4))
+
+    p10.runtime(block_product, (npgrid, 4))
