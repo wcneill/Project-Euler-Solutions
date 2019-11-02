@@ -1,5 +1,6 @@
 import math
 
+
 def factors(intgr):
     """
     NOTE: This is a "Trial Division" approach and is not suitable
@@ -8,7 +9,19 @@ def factors(intgr):
     :param intgr: Integer you'd like to find all factors of
     :return: a list of all factors
     """
-    return [i for i in range(1, intgr) if intgr % i == 0]
+
+    facts = []
+    i = 1
+
+    while i <= math.sqrt(intgr):
+        if intgr % i == 0:
+            if intgr / i == i:
+                facts.append(i)
+            else:
+                facts.extend((i, intgr / i))
+        i += 1
+
+    return sorted(facts)
 
 def prime_factors(num):
     """
