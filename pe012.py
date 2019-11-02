@@ -2,20 +2,18 @@ from math import sqrt
 from timeit import default_timer as timer
 
 
-def factors(n):
+def fact_count(n):
 
-    divs = []
+    cnt = 0
     i = 1
     while i <= sqrt(n):
         if n % i == 0:
-            if n / i == i:
-                divs.append(i)
+            if n / i == i:  # For case of perfect square
+                cnt += 1
             else:
-                divs.extend((i, n / i))
-
+                cnt += 2
         i += 1
-
-    return sorted(divs)
+    return cnt
 
 
 facts = 0
@@ -24,7 +22,7 @@ count = 1
 
 start = timer()
 while facts < 500:
-    facts = len(factors(num))
+    facts = fact_count(num)
     count += 1
     num += count
 

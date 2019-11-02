@@ -6,10 +6,26 @@ def is_prime(num):
     sqrt(N). See proof outlined in comments of Exercise 3 - pe003.py
     If no factor is found by sqrt(N), then the number must be prime.
 
-    Additionally, this algorithm makes use of the fact that any
-    numbers "n" greater than 3 can be represented as:
+    So, this algorithm iterates through all possible prime numbers less
+    than sqrt(N). We speed this up by making use of the fact that every
+    prime number p can be represented as
 
-    n = 6k +/- 1
+    p = 6k +/- 1
+
+    Proof:
+    It can be shown that all integers are in the set {0,1,2,3,4,5}
+    modulo 6.
+
+    Therefore:
+
+    x = 6k                  (composite)
+    x = 6k + 1              (possibly prime)
+    x = 6k + 2 = 2(3k + 1)  (composite)
+    x = 6k + 3 = 3(2k + 1)  (composite)
+    x = 6k + 4 = 2(3k + 2)  (composite)
+    x = 6k + 5 = 6m - 1     (possibly prime)
+
+    So, the only options for prime numbers are 6k + 1 or 6k - 1.
 
     :param num: The number to determine primality of
     :return: Boolean (is prime?)
@@ -31,13 +47,11 @@ def is_prime(num):
 
     while i <= stop:
 
-        # For any num = 5 + 6k, there is an integer n
-        # such that 5 + 6k = 6n - 1
+        # We are checking each number i = 6k - 1
         if num % i == 0:
             return False
 
-        # Because, for any integer k:
-        # 5 + 6k + 2 = 6n - 1 + 2 = 6n + 1
+        # We are checking i = 6k + 1
         if num % (i + 2) == 0:
             return False
 
