@@ -1,5 +1,5 @@
 # Project-Euler-Solutions
-This repository contains working code for my solutions to Project Euler probems (ProjectEuler.net)
+This repository contains working code for my solutions to Project Euler problems (ProjectEuler.net)
 
 I want to make it clear that significant time was taken to attempt every problem without peaking at 
 other user's source code. In the cases where I was unable to complete an exercise on my own, I made 
