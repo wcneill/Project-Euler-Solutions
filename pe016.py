@@ -1,4 +1,4 @@
-
+# Exercise 16
 string_result = str(2 ** 1000)
 print(type(string_result))
 
