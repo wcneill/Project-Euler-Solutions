@@ -36,6 +36,7 @@ tens_dict = {
     9: 'ninety'
 }
 
+
 def num_2_word(num):
     if num == 1000:
         return "one thousand"
@@ -113,4 +114,3 @@ if __name__ == '__main__':
 
     s = "".join(numlist)
     print(len(s))
-
