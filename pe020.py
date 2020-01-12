@@ -17,5 +17,4 @@ def sum_digits(n):
 
 
 if __name__ == '__main__':
-
     print(sum_digits(fact(100)))
