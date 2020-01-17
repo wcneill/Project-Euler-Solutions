@@ -1,22 +1,23 @@
 import math
 
 
-def prop_divisors(x):
-    prop_divs = [1]
+def sum_prop_divisors(x):
+    sigma = 1
     i = 2
 
     while i <= math.sqrt(x):
         if x % i == 0:
             if x/i == i:
-                prop_divs.append(i)
+                sigma += i
             else:
-                prop_divs.extend((x/i, i))
+                sigma += (x/i + i)
         i += 1
-    return prop_divs
+
+    return sigma
 
 
 def isAbundant(x):
-    if sum(prop_divisors(x)) > x:
+    if sum_prop_divisors(x) > x:
         return True
     else:
         return False
@@ -55,9 +56,9 @@ def isAbundant(x):
 # in set theory.
 
 
-universe = set(range(1, 28124))
+universe = set(range(1, 20162))
 abundant_numbers = set()
-sums_of_abundant = set(range(48, 28124, 2))
+sums_of_abundant = set(range(48, 20162, 2))
 
 for n in universe:
     if isAbundant(n):
@@ -66,7 +67,7 @@ for n in universe:
 for a in abundant_numbers:
     for a_2 in abundant_numbers:
         result = a + a_2
-        if result < 28124:
+        if result < 20162:
             sums_of_abundant.add(result)
 
 not_abundant_sum = universe - sums_of_abundant
