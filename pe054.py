@@ -1,3 +1,5 @@
+from datetime import datetime
+
 hand_rank = {
     'High Card': 1,
     'Pair': 2,
@@ -24,7 +26,7 @@ card_values = {
 
 def getValues(hand):
     """
-    Returns a list of the card values found in a hand,
+    Returns a list of the card face values found in a hand,
 
     Example: [2H, 3S, KC, JS, AD] ---> [2, 3, K, J, A]
     :param hand:
@@ -52,8 +54,8 @@ def play(file):
     print("Player 2 wins: ", p2_wins)
 
 
-
 def getPairs(hand: list):
+    """Returns a list of all pair values (a single entry for each pair)"""
     value_list = getValues(hand)
     pairs = []
     counted = []
@@ -66,10 +68,16 @@ def getPairs(hand: list):
 
 
 def getPair(hand: list):
+    """Returns first pair in a list of pairs"""
     return getPairs(hand)[0]
 
 
 def isPair(hand: list):
+    """
+    Return true if a pair exists in the provided hand of cards.
+    :param hand:
+    :return:
+    """
     pairs = getPairs(hand)
     if len(pairs) > 0:
         return True
@@ -77,6 +85,11 @@ def isPair(hand: list):
 
 
 def isThree(hand):
+    """
+    Returns True if three of kind is present in the given hand of cards.
+    :param hand:
+    :return:
+    """
     value_list = getValues(hand)
     for value in value_list:
         if value_list.count(value) == 3:
@@ -85,6 +98,11 @@ def isThree(hand):
 
 
 def getThree(hand):
+    """
+    returns the face value of the three of a kind found in the hand provided.
+    :param hand:
+    :return:
+    """
     value_list = getValues(hand)
     for value in value_list:
         if value_list.count(value) == 3:
@@ -92,6 +110,11 @@ def getThree(hand):
 
 
 def isFour(hand):
+    """
+    Returns true if a four of a kind is found in the hand of cards.
+    :param hand:
+    :return:
+    """
     value_list = getValues(hand)
     for value in value_list:
         if value_list.count(value) == 4:
@@ -100,6 +123,11 @@ def isFour(hand):
 
 
 def getFour(hand):
+    """
+    Returns the face value of the cards found in the four of a kind in the given hand.
+    :param hand:
+    :return:
+    """
     value_list = getValues(hand)
     for value in value_list:
         if value_list.count(value) == 4:
@@ -107,6 +135,11 @@ def getFour(hand):
 
 
 def isTwoPair(hand: list):
+    """
+    Returns true if there are two pairs in the hand.
+    :param hand:
+    :return:
+    """
     pairs = getPairs(hand)
     if len(pairs) == 2:
         return True
@@ -114,24 +147,26 @@ def isTwoPair(hand: list):
 
 
 def isFullHouse(hand):
+    """Returns true if a full house is present in the hand."""
     if isPair(hand) and isThree(hand):
-        print("Pair: ", getPair(hand))
-        print("Three:", getThree(hand))
         if getPair(hand) != getThree(hand):
             return True
     return False
 
 
 def isFlush(hand: list):
+    """Returns true if a flush is found in the hand."""
     first = hand[0][1]
     return all([x[1] == first for x in hand])
 
 
 def isStraight(hand):
+    """Returns true if a straight is found in the hand."""
     return all(card_values[a[0]] + 1 == card_values[b[0]] for a, b in zip(hand, hand[1:]))
 
 
 def isStrFlush(hand):
+    """Returns true if a Straight Flush is found in the hand."""
     is_straight = isStraight(hand)
     is_flush = isFlush(hand)
     if is_flush and is_straight:
@@ -141,6 +176,7 @@ def isStrFlush(hand):
 
 
 def isRoyalFlush(hand):
+    """Returns true if a Royal Flush is found in the hand."""
     value = sum([card_values[card[0]] for card in hand])
     if value == 60 and isFlush(hand):
         return True
@@ -229,6 +265,7 @@ def find_plays(hand: list):
 
 
 def get_best(hand):
+    """Returns the best possible play in a given hand."""
     plays = find_plays(hand)
     if len(plays) == 0:
         return 'High Card'
@@ -237,6 +274,12 @@ def get_best(hand):
 
 
 def compare_hands(p1_hand, p2_hand):
+    """
+    Compares two hands, finds the best possible play in each hand, and then returns the winner.
+    :param p1_hand:
+    :param p2_hand:
+    :return:
+    """
     sort_hand(p1_hand)
     sort_hand(p2_hand)
 
@@ -258,10 +301,16 @@ def compare_hands(p1_hand, p2_hand):
     print("\nPlayer 1 lays: \n", p1_choice, "with tie value", p1_tie_value)
     print(" High Card: ", p1_hand[4], '\n')
 
-    print("Player 2 Hand: ", p2_hand)
-    print("Player 2 hand possibilites: \n", p2_plays)
-    print("Player 2 plays: \n", p2_choice)
-    print(" High Card: ", p2_hand[4])
+    print("Player 2 Hand: ", end=' ')
+    for card in p2_hand:
+        print(card, end=' ')
+
+    print("\nPlayer 2 hand possibilites:")
+    for play in p2_plays:
+        print(play[0], end=', ')
+
+    print("\nPlayer 2 lays: \n", p2_choice, "with tie value", p2_tie_value)
+    print(" High Card: ", p2_hand[4], '\n')
 
     # Check ranks of players choice of plays:
     if hand_rank[p1_choice] > hand_rank[p2_choice]:
@@ -296,23 +345,6 @@ def compare_hands(p1_hand, p2_hand):
 
 
 if __name__ == '__main__':
+    startTime = datetime.now()
     play('data\\p054_poker.txt')
-
-        # choose best play, determine score
-        # sum value of cards in play
-        # sort all cards in hand by
-
-    # Rank Player 2 hand
-        # same steps as player 1
-
-    # Compare hands
-        # compare rank of plays
-            # If win/lose: return
-            # If tie:
-                #compare sum of card values in play
-                    # If win/lose: return
-                    # If tie:
-                        # for cards in hands:
-                            # compare high card value
-                            # If higher card exists: return win/lose
-                            # If tie, move to next card.
+    print("Total run time: ", datetime.now() - startTime)
