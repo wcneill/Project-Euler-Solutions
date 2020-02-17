@@ -32,13 +32,9 @@ def prime_factors(num):
 
     Proof:
 
-    Case 1: Let a, b be two prime factors of n such that a,b > sqrt(n)
-            => a*b > sqrt(n)*sqrt(n) = n
-            => Contradiction!
-
-    Case 2: Let a, b be two prime factors of n such that a,b < sqrt(n)
-            => a*b < sqrt(n)*sqrt(n) = n
-            => Contradiction!
+    Let a, b be two prime factors of n such that a,b > sqrt(n)
+        => a*b > sqrt(n)*sqrt(n) = n
+        => Contradiction!
 
     :param num: The number you wish to find prime factors for.
     :return: A list of factors of parameter num

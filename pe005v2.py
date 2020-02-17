@@ -1,7 +1,6 @@
 import pe003 as pe
 from collections import Counter
 
-
 def lcm(iterable):
     """
     A faster version for finding the least common multiple of all the
@@ -38,7 +37,7 @@ def lcm(iterable):
     for k in iterable:
 
         kfacts = pe.prime_factors(k)
-        print("factorization of", k, "is", kfacts)
+        # print("factorization of", k, "is", kfacts)
 
         for i in kfacts:
             count = Counter(kfacts)[i]
